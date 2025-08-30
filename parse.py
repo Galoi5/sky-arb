@@ -281,3 +281,14 @@ def parse_recursive_recipe_2():
     return circular_dependencies
 
 #parse_recursive_recipe_2()
+
+def parse_bazaar():
+    bazaar_data = ujson.load(open("parsed-data/bazaar.json"))
+    items = []
+    for item in bazaar_data:
+        if not item["recipe"]:
+            item["recipe"] = {}
+        items.append(item)
+    ujson.dump(items, open("parsed-data/bazaar2.json", "w"))
+
+#parse_bazaar()
